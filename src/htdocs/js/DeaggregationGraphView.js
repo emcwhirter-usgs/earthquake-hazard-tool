@@ -32,8 +32,6 @@ var DeaggregationGraphView = function (options) {
     _rlabel = options.rlabel;
     _εbins = options.εbins;
     _εlabel = options.εlabel;
-
-    console.log(_this.model.get());
   };
 
 

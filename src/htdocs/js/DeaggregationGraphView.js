@@ -7,9 +7,7 @@ var D3View = require('d3/D3View'),
 
 var DeaggregationGraphView = function (options) {
   var _this,
-      _initialize,
-
-      _title;
+      _initialize;
 
   _this = D3View(Util.extend({
     xLabel: 'Closest Distance, Rcd (km)',
@@ -18,10 +16,8 @@ var DeaggregationGraphView = function (options) {
   }, options));
 
 
-  _initialize = function (options) {
+  _initialize = function (/*options*/) {
     _this.el.classList.add('DeaggregationGraphView');
-
-    _title = options.title;
   };
 
 
@@ -29,7 +25,6 @@ var DeaggregationGraphView = function (options) {
    * Unbind event listeners and free references.
    */
   _this.destroy = Util.compose(function () {
-    _title = null;
 
   }, _this.destroy);
 

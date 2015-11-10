@@ -7,17 +7,33 @@ var D3View = require('d3/D3View'),
 
 var DeaggregationGraphView = function (options) {
   var _this,
-      _initialize;
+      _initialize,
+
+      _deaggregations,
+      _imt,
+      _mlabel,
+      _rlabel,
+      _εbins,
+      _εlabel;
 
   _this = D3View(Util.extend({
-    xLabel: 'Closest Distance, Rcd (km)',
-    yLabel: 'MAGNITUDE (Mw)',
-    zLabel: '% Contribution to Hazard'
+    rLabel: 'Closest Distance, Rcd (km)',
+    mLabel: 'MAGNITUDE (Mw)',
+    εLabel: '% Contribution to Hazard'
   }, options));
 
 
-  _initialize = function (/*options*/) {
+  _initialize = function (options) {
     _this.el.classList.add('DeaggregationGraphView');
+
+    _deaggregations = options.deaggregations;
+    _imt = options.imt;
+    _mlabel = options.mlabel;
+    _rlabel = options.rlabel;
+    _εbins = options.εbins;
+    _εlabel = options.εlabel;
+
+    console.log(_this.model.get());
   };
 
 
@@ -25,6 +41,12 @@ var DeaggregationGraphView = function (options) {
    * Unbind event listeners and free references.
    */
   _this.destroy = Util.compose(function () {
+    _deaggregations = null;
+    _imt = null;
+    _mlabel = null;
+    _rlabel = null;
+    _εbins = null;
+    _εlabel = null;
 
   }, _this.destroy);
 

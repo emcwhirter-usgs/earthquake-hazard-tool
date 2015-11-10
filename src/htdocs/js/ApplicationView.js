@@ -4,6 +4,7 @@ var ActionsView = require('ActionsView'),
     BasicInputsView = require('BasicInputsView'),
     Calculator = require('Calculator'),
     ComponentCurvesGraphView = require('ComponentCurvesGraphView'),
+    DeaggregationGraphView = require('DeaggregationGraphView'),
     ErrorsView = require('ErrorsView'),
     HazardCurveView = require('HazardCurveGraphView'),
     HazardSpectrumView = require('ResponseSpectrumGraphView'),
@@ -29,6 +30,8 @@ var ApplicationView = function (params) {
       _componentCurveEl,
       _componentCurveView,
       _curves,
+      _deaggregationGraphEl,
+      _deaggregationGraphView,
       _dependencyFactory,
       _editions,
       _errorsEl,
@@ -118,6 +121,11 @@ var ApplicationView = function (params) {
       el: _componentCurveEl.appendChild(document.createElement('div')),
       title: 'Hazard Curve Compoents'
     });
+
+    _deaggregationGraphView = DeaggregationGraphView({
+      el: _deaggregationGraphEl.appendChild(document.createElement('div')),
+      title: 'Deaggregation'
+    });
   };
 
 
@@ -142,6 +150,8 @@ var ApplicationView = function (params) {
         '</section>',
         '<section class="application-hazard-component column one-of-two">',
         '</section>',
+        '<section class="application-hazard-deaggregation column one-of-two">',
+        '</section>',
       '</div>'
     ].join('');
 
@@ -150,6 +160,7 @@ var ApplicationView = function (params) {
     _errorsEl = el.querySelector('.application-errors');
     _actionsEl = el.querySelector('.application-actions');
     _componentCurveEl = el.querySelector('.application-hazard-component');
+    _deaggregationGraphEl = el.querySelector('.application-hazard-deaggregation');
     _hazardCurveEl = el.querySelector('.application-hazard-curve');
     _hazardSpectrumEl = el.querySelector('.application-hazard-spectrum');
   };
@@ -344,6 +355,7 @@ var ApplicationView = function (params) {
     // sub-views
     _actionsView.destroy();
     _basicInputsView.destroy();
+    _deaggregationGraphView.destroy();
     _hazardCurveView.destroy();
     _hazardSpectrumView.destroy();
     _mapView.destroy();
@@ -362,6 +374,8 @@ var ApplicationView = function (params) {
     _basicInputsEl = null;
     _basicInputsView = null;
     _calculator = null;
+    _deaggregationGraphEl = null;
+    _deaggregationGraphView = null;
     _dependencyFactory = null;
     _editions = null;
     _errorsEl = null;

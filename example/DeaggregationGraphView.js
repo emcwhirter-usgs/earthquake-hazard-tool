@@ -1,22 +1,24 @@
 'use strict';
 
-var Collection = require('mvc/Collection'),
-    DeaggregationGraphView = require('deagg/DeaggregationGraphView'),
-    DeaggResponse = require('deagg/DeaggResponse'),
-    rawResponse = require('etc/deagg').response[0];
+var DeaggregationGraphView = require('DeaggregationGraphView'),
+
+    DeaggregationResponse = require('deagg/DeaggResponse'),
+
+    rawResponse = require('etc/deagg'),
+
+    Collection = require('mvc/Collection');
 
 
-var collection,
+var deaggregations,
     response,
     view;
 
-response = DeaggResponse(rawResponse);
-collection = Collection();
-collection.add(response);
-collection.select(response);
+response = DeaggregationResponse(rawResponse.response[0]);
+deaggregations = response.get('deaggregations');
+deaggregations.select(deaggregations.data()[0]);
 
 view = DeaggregationGraphView({
   el: document.querySelector('#example'),
-  collection: collection
+  collection: deaggregations
 });
 view.render();

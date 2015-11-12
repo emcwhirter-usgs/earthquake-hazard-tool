@@ -37,7 +37,6 @@ require('./spec/ApplicationViewTest');
 require('./spec/ContourTypeViewTest');
 require('./spec/CalculatorTest');
 require('./spec/DataExportTest');
-require('./spec/DeaggregationGraphViewTest');
 require('./spec/DependencyFactoryTest');
 require('./spec/EditionViewTest');
 require('./spec/MapViewTest');

@@ -1,7 +1,6 @@
 'use strict';
 
-var DeaggregationGraphView = require('DeaggregationGraphView'),
-
+var DeaggregationGraphView = require('deagg/DeaggregationGraphView'),
     DeaggregationResponse = require('deagg/DeaggResponse'),
 
     rawResponse = require('etc/deagg'),

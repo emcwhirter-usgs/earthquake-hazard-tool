@@ -63,7 +63,7 @@ var DeaggResponse = function (params) {
       mlabel: metadata.mlabel,
       εlabel: metadata.εlabel,
       εbins: metadata.εbins,
-      deaggregations: Collection(params.data.map(Deaggregation))
+      deaggregations: Collection(deaggs)
     };
 
     // Should not have listeners yet, but silent anyway to short-circuit check

@@ -19,9 +19,9 @@ describe('DeaggregationGraphView', function () {
       expect(DeaggregationGraphView).not.to.throw(Error);
     });
 
-    // it('can be created and destroyed', function () {
-    //   var view = DeaggregationGraphView();
-    //   view.destroy();
-    // });
+    it('can be created and destroyed', function () {
+      var view = DeaggregationGraphView();
+      view.destroy();
+    });
   });
 });

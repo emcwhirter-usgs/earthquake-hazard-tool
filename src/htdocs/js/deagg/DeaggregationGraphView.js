@@ -1,6 +1,7 @@
 'use strict';
 
 var SelectedCollectionView = require('mvc/SelectedCollectionView'),
+
     Util = require('util/Util');
 
 
@@ -16,9 +17,18 @@ var DeaggregationGraphView = function (options) {
 
   _initialize = function (options) {
     options = Util.extend({}, _DEFAULTS, options);
+
+    _this.el.classList.add('DeaggregationGraphView');
   };
 
 
+  /**
+   * Unbind event listeners and free references.
+   */
+  _this.destroy = Util.compose(function () {
+
+  }, _this.destroy);
+  
   _this.render = function () {
     _this.el.innerHTML = '<pre>' +
         JSON.stringify(_this.model, null, '  ') +

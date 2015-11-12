@@ -5,7 +5,8 @@ var DeaggregationGraphView = require('deagg/DeaggregationGraphView'),
 
     rawResponse = require('etc/deagg'),
 
-    Collection = require('mvc/Collection');
+    Collection = require('mvc/Collection'),
+    Model = require('mvc/Model');
 
 
 var deaggregations,
@@ -18,6 +19,9 @@ deaggregations.select(deaggregations.data()[0]);
 
 view = DeaggregationGraphView({
   el: document.querySelector('#example'),
-  collection: deaggregations
+  collection: deaggregations,
+  metadata: Model({
+    response: response
+  })
 });
 view.render();

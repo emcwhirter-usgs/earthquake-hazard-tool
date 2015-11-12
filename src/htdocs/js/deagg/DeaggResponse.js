@@ -51,7 +51,11 @@ var DeaggResponse = function (params) {
         {id: 'deagg-response-' + (_DEAGG_ID++)}, params);
 
     metadata = params.metadata;
-    deaggs = [];
+    deaggs = params.data.map(function (deagg) {
+      return Deaggregation(Util.extend({
+        metadata: metadata
+      }, deagg));
+    });
 
     attributes = {
       imt: metadata.imt.value,

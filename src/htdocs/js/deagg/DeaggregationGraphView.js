@@ -11,7 +11,9 @@ var _DEFAULTS = {};
 
 var DeaggregationGraphView = function (options) {
   var _this,
-      _initialize;
+      _initialize,
+
+      _updateDeaggs;
 
 
   _this = SelectedCollectionView(options);
@@ -22,17 +24,8 @@ var DeaggregationGraphView = function (options) {
     _this.el.classList.add('DeaggregationGraphView');
   };
 
-
-  /**
-   * Unbind event listeners and free references.
-   */
-  _this.destroy = Util.compose(function () {
-
-  }, _this.destroy);
-
-  _this.render = function () {
+  _updateDeaggs = function () {
     var datas,
-        j,
         json,
         m,
         metadata,
@@ -40,35 +33,48 @@ var DeaggregationGraphView = function (options) {
         εbin,
         εbinId,
         εbins,
-        εbinCount,
-        εdata,
-        εdataCurrent,
+        // εbinCount,
+        εdatas,
+        // εdataCurrent,
         εvalue;
 
     datas = _this.model.get('data');
+    // console.log(datas);
     metadata = _this.model.get('metadata');
     εbins = Collection(metadata.εbins);
 
     datas.map(function (data) {
       m = data.m;
       r = data.r;
-      εdata = data.εdata;
-      εbinCount = εdata.length;
+      εdatas = data.εdata;
+      // εbinCount = εdata.length;
 
-      for (j = 0; j < εbinCount; j++) {
-        εdataCurrent = εdata[j];
-
-        εbinId = εdataCurrent.εbin;
+      εdatas.map(function (εdata) {
+        εbinId = εdata.εbin;
         εbin = εbins.get(εbinId);
-        εvalue = εdataCurrent.value;
+        console.log(εbin.min);
+        εvalue = εdata.value;
         // Construct object for D33d with m, r, bin & value
-      }
+      });
     });
 
     // json = JSON.stringify(_this.model, null, '  ');
     json = JSON.stringify(metadata, null, '  ');
 
     _this.el.innerHTML = '<pre>' + json + '</pre>';
+  };
+
+
+  /**
+   * Unbind event listeners and free references.
+   */
+  _this.destroy = Util.compose(function () {
+    _updateDeaggs = null;
+
+  }, _this.destroy);
+
+  _this.render = function () {
+    _updateDeaggs();
   };
 
   _initialize(options);

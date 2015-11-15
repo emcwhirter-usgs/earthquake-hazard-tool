@@ -33,9 +33,7 @@ var DeaggregationGraphView = function (options) {
         εbin,
         εbinId,
         εbins,
-        // εbinCount,
         εdatas,
-        // εdataCurrent,
         εvalue;
 
     datas = _this.model.get('data');
@@ -47,19 +45,27 @@ var DeaggregationGraphView = function (options) {
       m = data.m;
       r = data.r;
       εdatas = data.εdata;
-      // εbinCount = εdata.length;
+      console.log('BEFORE');
+      console.log(εdatas[0]);
 
       εdatas.map(function (εdata) {
         εbinId = εdata.εbin;
         εbin = εbins.get(εbinId);
-        console.log(εbin.min);
+
         εvalue = εdata.value;
-        // Construct object for D33d with m, r, bin & value
+
+        return {
+          εmax: εbin.max,
+          εmin: εbin.min,
+          εvalue: εvalue
+        };
       });
+      console.log('AFTER');
+      console.log(εdatas[0]);
     });
 
-    // json = JSON.stringify(_this.model, null, '  ');
-    json = JSON.stringify(metadata, null, '  ');
+    json = JSON.stringify(_this.model, null, '  ');
+    // json = JSON.stringify(metadata, null, '  ');
 
     _this.el.innerHTML = '<pre>' + json + '</pre>';
   };
